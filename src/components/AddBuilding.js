@@ -1,6 +1,9 @@
 import React from 'react';
 
 class AddBuilding extends React.Component {
+	addBuilding() {
+		this.props.addBuilding()
+
 	render() {
 		const { addBuilding } = this.props;
 		return (
