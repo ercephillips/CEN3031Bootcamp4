@@ -30,16 +30,16 @@ class App extends React.Component {
   }
 
   removeBuilding() {
-		var listings = this.state.listings.filter(listing => {return listing.id !== this.state.selectedBuilding})
+	  var listings = this.state.listings.filter(listing => {return listing.id !== this.state.selectedBuilding})
     this.setState({
       listings: listings
     })
   }
 
   addBuilding(code, name, latitude, longitude, address) {
-    const id = this.state.listings.length + 1;
+    const id = this.state.listings.length;
     const building = {
-      id:id,
+      id:id+1,
       code:code,
       name:name,
       coordinates: { 
