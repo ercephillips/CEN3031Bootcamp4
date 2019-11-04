@@ -18,6 +18,7 @@ class ViewBuilding extends React.Component {
 							<p>{building.name}</p>
 							{building.coordinates && <p>Coordinates:{' '+building.coordinates.latitude},{' '+building.coordinates.longitude}</p>}
 							{building.address && <p>Address:{' ' + building.address}</p>}
+							<RemoveBuilding removeBuilding={removeBuilding} />
 						</div>
 					)
 				

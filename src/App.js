@@ -29,6 +29,30 @@ class App extends React.Component {
     })
   }
 
+  removeBuilding() {
+		var listings = this.state.listings.filter(listing => {return listing.id !== this.state.selectedBuilding})
+    this.setState({
+      listings: listings
+    })
+  }
+
+  addBuilding(code, name, latitude, longitude, address) {
+    const id = this.state.listings.length + 1;
+    const building = {
+      id:id,
+      code:code,
+      name:name,
+      coordinates: { 
+        latitude:parseFloat(latitude), 
+        longitude:parseFloat(longitude) },
+      address:address
+    }
+    var listings = [...this.state.listings, building]
+    this.setState({
+      listings: listings,
+      selectedBuilding: building.id
+    })
+  }
 
   render() {
   
@@ -42,7 +66,7 @@ class App extends React.Component {
       <main>
         <div className="row">
           <div className="column1">
-            <table className="listings-table">
+             <table className="table table-striped table-hover">>
               <thead>
                 <tr>
                   <th>Code</th>
@@ -60,10 +84,15 @@ class App extends React.Component {
               <ViewBuilding
                 selectedBuilding={this.state.selectedBuilding}
                 listings={this.state.listings}
+                removeBuilding={this.removeBuilding.bind(this)}
               />
+              <AddBuilding 
+                  listings={this.state.listings}
+                  addBuilding={this.addBuilding.bind(this)} 
+                />
             <br/>
           </div>
-        </div>
+          </div>
       </main>
       <footer className="row">
         <Credit />
